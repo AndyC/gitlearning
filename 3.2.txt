@@ -1,0 +1,26 @@
+在本地创建一个Git仓库后，可以继续在GitHub上创建一个Git仓库，并且让这两个仓库远程同步，这样，
+GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。
+
+首先应该登录自己的GitHub账号，然后创建一个新的repository（创建一个新的git仓库）。
+创建完成后的仓库是空的，可以从这个仓库克隆出新的仓库，也可以把一个已有的仓库与之关联，然后把
+本地仓库的内容推送到GitHub仓库。
+
+要想将本地的仓库与上面创建的远成仓库关联，需要在本地的仓库下运行命令：
+
+git remote add origin https://github.com/AndyC/gitlearning.git
+(当你在GitHub上面创建一个仓库时，GitHub会提示你可以将本地的某个仓库与远程的仓库关联
+并给出上面的关联命令)。
+有时你可能之前已经将本地仓库与某个远程仓库关联，这时git会提示给出如下的提示：
+fatal：remote origin already exists。
+这时需要将之前关联的远程仓库删除，使用下面的命令：
+git rimote rm origin 
+将本地仓库与远程仓库关联后可以将本地仓库的所有内容推送到远程库上，使用下面的命令：
+git push -u origin master
+把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。
+由于远程仓库是空的，我们在第一次推送master分支时，加上了-u参数，Git不但会把本地的
+master分支推送到远程的master分支上，还会把本地master分支和远程的master分支关联起来，
+在以后的推送或者拉取时就可以简化命令。
+
+从现在起，只要本地做了提交，就可以通过命令：
+git push origin master
+将本地master分支的最新修改推送到GitHub。
